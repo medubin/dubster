@@ -1,21 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import Navbar from './navbar/components/navbar';
+import './common/scss/app.css'
+import { getCurrentUser } from './user/actions/user_actions'
 
-class App extends Component {
+const mapStateToProps = ({user}) => ({
+  userFetched: user.userFetched,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getCurrentUser: user => dispatch(getCurrentUser(user)),
+});
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props.getCurrentUser(); // TODO it flashes the login screen. I need to figure that outs
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className='app-container'>
+        <header>
+          <Navbar />
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className='body-container'>
+          {this.props.children}
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(App));

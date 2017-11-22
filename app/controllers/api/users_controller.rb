@@ -1,4 +1,4 @@
-class User::Api::V1::UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   def show
     @user = User.find_by(username: params[:id])
     if @user
