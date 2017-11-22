@@ -33,8 +33,6 @@ class Navbar extends React.Component {
           <a className='navbar-logo'>Dubster</a>
             <ul>
               <li><Link to="/"></Link></li>
-              <li><Link to="/activity/">Log Activity</Link></li>
-              <li><Link to="/activity/new/">New Activity</Link></li>
               <li><Link to="/login" onClick={this.logout}>Logout</Link></li>
             </ul>
         </nav>
