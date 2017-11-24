@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login, signup } from '../actions/user_actions';
 import Form from '../../common/components/form'
@@ -32,16 +32,19 @@ class UserForm extends Form {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	componentDidMount() {
+		this.redirectIfLoggedIn();
+	}
+
 	componentDidUpdate() {
 		this.redirectIfLoggedIn();
 	}
 
 	redirectIfLoggedIn() {
 		if (this.props.loggedIn) {
-			this.props.router.push("/");
+			this.props.history.push("/");
 		}
 	}
-
 
 	handleSubmit(e) {
 		e.preventDefault();

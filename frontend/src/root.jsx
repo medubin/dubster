@@ -2,7 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 // react router
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, Switch } from 'react-router-dom'
+import createBrowserHistory from 'history/createBrowserHistory';
+
 
 // react components
 import App from './App'
@@ -23,20 +25,20 @@ const Root = ({ store }) => {
     }
   };
 
+  const history = createBrowserHistory();
 
   return (
     <Provider store={store}>
-       <Router history={browserHistory}>
+       <Router history={history} >
+       <Switch>
          <Route path="/" component={App}> 
-            <Route path="/login" component={UserForm} onEnter={_redirectIfLoggedIn} />
-            <Route path="/signup" component={UserForm} onEnter={_redirectIfLoggedIn} />
          </Route>
+         </Switch>
        </Router>
      </Provider>
    );
 
 
 }
-
 
 export default Root;
