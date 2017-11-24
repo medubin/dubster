@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import Navbar from './navbar/components/navbar';
+import Modal from './modal/components/modal'
 import './common/scss/app.css'
 import { getCurrentUser } from './user/actions/user_actions'
 
@@ -26,6 +27,7 @@ class App extends React.Component {
         <header>
           <Navbar />
         </header>
+        <Modal />
         <div className='body-container'>
           {this.props.children}
         </div>

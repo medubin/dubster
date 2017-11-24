@@ -15,7 +15,6 @@ const UserReducer = (state = _nullUser, action) => {
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       window.currentUser = action.currentUser;
-      console.log('updating userFetched')
       const userFetched = true
       const currentUser = action.currentUser;
       return merge({}, _nullUser, {currentUser, userFetched});
