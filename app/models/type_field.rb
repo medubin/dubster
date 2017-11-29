@@ -1,0 +1,2 @@
+class TypeField < ApplicationRecord
+end
