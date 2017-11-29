@@ -16,16 +16,11 @@ const mapDispatchToProps = (dispatch) => ({
   getCurrentUser: user => dispatch(getCurrentUser(user)),
 });
 
-// const _redirectIfLoggedIn = (nextState, replace) => {
-//   if (currentUser) {
-//     replace('/');
-//   }
-// };
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.props.getCurrentUser(); // TODO it flashes the login screen. I need to figure that outs
+    this.props.getCurrentUser();
   }
 
 

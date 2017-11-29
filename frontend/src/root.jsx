@@ -18,12 +18,12 @@ const Root = ({ store }) => {
     }
   };
 
-  const _redirectIfLoggedIn = (nextState, replace) => {
-    const currentUser = store.getState().user.currentUser;
-    if (currentUser) {
-      replace('/');
-    }
-  };
+  // const _redirectIfLoggedIn = (nextState, replace) => {
+  //   const currentUser = store.getState().user.currentUser;
+  //   if (currentUser) {
+  //     replace('/');
+  //   }
+  // };
 
   const history = createBrowserHistory();
 
