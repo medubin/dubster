@@ -14,12 +14,20 @@ class Api::TypesController < ApplicationController
     end
 
     def create
+        if (!current_user)
+            render json: "User not found", status: 422
+        else 
+            @type = Type.create(type_params)
+            @type.user_id = current_user.id
+            @type.save
+            render "api/types/show"        
+        end
         
     end
 
     private
-    def activity_params
-      params.require(:type).permit(:name, :category, :user_id, type_field: [:name, :category, :limit])
+    def type_params
+      params.require(:type).permit(:name, :category, type_fields_attributes: [:name, :category, :limit])
     end
 
 
