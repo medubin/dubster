@@ -1,0 +1,1 @@
+json.extract! type, :name, :category, :user_id
