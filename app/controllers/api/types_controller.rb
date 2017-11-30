@@ -7,17 +7,19 @@ class Api::TypesController < ApplicationController
     def index
         if (!current_user)
             render json: "User not found", status: 422
+        else
+            @types = current_user.types
+            render "api/types/index"
         end
-        @types = current_user.types
-        render "api/types/index"
     end
 
     def create
+        
     end
 
     private
     def activity_params
-      params.require(:type).permit(:name, :category, :user_id)
+      params.require(:type).permit(:name, :category, :user_id, type_field: [:name, :category, :limit])
     end
 
 
