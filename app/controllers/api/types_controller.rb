@@ -14,13 +14,14 @@ class Api::TypesController < ApplicationController
     end
 
     def create
+        debugger
         if (!current_user)
             render json: "User not found", status: 422
         else 
             @type = Type.create(type_params)
             @type.user_id = current_user.id
             @type.save
-            render "api/types/show"        
+            render "api/types/show"
         end
         
     end

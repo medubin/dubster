@@ -1,13 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NewField from './new_field';
+import * as Type from '../../constants/type';
+import {createType} from '../../actions/type_actions'
+import { withRouter } from 'react-router-dom';
+
+
 
 const mapStateToProps = () => ({
 });
-  
-const mapDispatchToProps = (dispatch) => {
 
-}
+const mapDispatchToProps = (dispatch) => ({
+    createType: typeData => dispatch(createType(typeData))
+  });
+  
   
 
 class CreateType extends React.Component {
@@ -15,8 +21,11 @@ class CreateType extends React.Component {
         super(props)
         this.addNewFieldCallback = this.addNewFieldCallback.bind(this);
         this.state = {
+            category:'',
+            name:'',
             fieldTypes: []
         }
+        this.submitType = this.submitType.bind(this)
     }
 
     addNewFieldCallback(category, name, limit) {
@@ -38,6 +47,29 @@ class CreateType extends React.Component {
         this.setState({fieldTypes: newfieldTypes});
     }
 
+    submitType(event) {
+        event.preventDefault();
+        this.props.createType(this.state)
+
+    }
+
+    update(field) {
+        return e => this.setState({
+          [field]: e.currentTarget.value
+        });
+      }
+
+    renderSelectTypeCategory() {
+        return (
+            <select value={this.state.category} onChange={this.update('category')}>
+                <option value='' disabled selected>SELECT</option>
+                <option value={Type.THING}>{Type.THING} </option>
+                <option value={Type.STORY}>{Type.STORY} </option>
+            </select>
+        );
+        
+    }
+
     renderTypeFields() {
         return this.state.fieldTypes.map(function(el, idx) {
             return (
@@ -56,8 +88,12 @@ class CreateType extends React.Component {
     render() {
         return ( 
             <div> 
+                {this.renderSelectTypeCategory()}
+                <label>Name</label>
+                <input onChange={this.update('name')} value={this.state.name}></input>
+                <button onClick={this.submitType}>submit</button>
                 {this.renderTypeFields()}
-                < NewField addNewFieldCallback ={this.addNewFieldCallback}/>
+                <NewField addNewFieldCallback ={this.addNewFieldCallback}/>
            </div>
         );
     }
@@ -66,4 +102,4 @@ class CreateType extends React.Component {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CreateType);
+  )(withRouter(CreateType));

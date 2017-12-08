@@ -20,7 +20,7 @@ class NewField extends React.Component {
         });
       }
 
-    renderSelectFieldType() {
+    renderSelectFieldTypeCategory() {
         return (
             <select value={this.state.category} onChange={this.update('category')}>
                 <option value='' disabled selected>SELECT</option>
@@ -49,7 +49,7 @@ class NewField extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                {this.renderSelectFieldType()}
+                {this.renderSelectFieldTypeCategory()}
                 <label>Name</label>
                 <input onChange={this.update('name')} value={this.state.name}></input>
                 <label>Limit</label>

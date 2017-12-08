@@ -4,15 +4,15 @@ export const RECEIVE_TYPES = 'RECEIVE_TYPES';
 export const RECEIVE_TYPE = 'RECEIVE_TYPE';
 
 export const getTypes = () => dispatch => (
-    Api.getTypes().then(types => dispatch(receiveTypes(types)))
+    API.getTypes().then(types => dispatch(receiveTypes(types)))
 )
 
 export const getType = (typeId) => dispatch => (
-    Api.getType(typeId).then(type => dispatch(receiveType(type)))
+    API.getType(typeId).then(type => dispatch(receiveType(type)))
 )
 
 export const createType = (typeData) => dispatch => (
-    Api.createType(typeData).then(type => dispatch(receiveType(type)))
+    API.createType(typeData).then(type => dispatch(receiveType(type)))
 )
 
 export const receiveTypes = types => ({
