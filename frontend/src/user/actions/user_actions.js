@@ -1,27 +1,27 @@
-import * as APIUtil from '../api/user_api'
+import * as API from '../api/user_api'
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT = "LOGOUT"
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 export const signup = user => dispatch => (
-  APIUtil.signup(user)
+  API.signup(user)
     .then(user => dispatch(receiveCurrentUser(user)),
       err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const login = user => dispatch => (
-  APIUtil.login(user)
+  API.login(user)
     .then(user => dispatch(receiveCurrentUser(user)),
       err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const getCurrentUser = () => dispatch => (
-  APIUtil.getCurrentUser().then (user => dispatch(receiveCurrentUser(user)))
+  API.getCurrentUser().then (user => dispatch(receiveCurrentUser(user)))
 )
 
 export const logout = () => dispatch => (
-  APIUtil.logout().then(user => dispatch(receiveCurrentUser(null)))
+  API.logout().then(user => dispatch(receiveCurrentUser(null)))
 );
 
 export const receiveCurrentUser = currentUser => ({

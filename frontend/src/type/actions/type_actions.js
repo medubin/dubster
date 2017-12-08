@@ -20,7 +20,7 @@ export const receiveTypes = types => ({
     types
 })
 
-export const receiveType = type => ({
+export const receiveType = data => ({
     type: RECEIVE_TYPE,
-    type
+    data
 })

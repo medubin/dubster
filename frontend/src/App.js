@@ -2,8 +2,8 @@ import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from './navbar/components/navbar';
-import Modal from './modal/components/modal';
-import './common/scss/app.css';
+import Modal from './modal/components/modal'
+import './common/scss/app.css'
 import { getCurrentUser } from './user/actions/user_actions'
 import UserForm from './user/components/user_form'
 import CreateType from './type/components/create_type/create_type'
