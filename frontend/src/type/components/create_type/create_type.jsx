@@ -71,7 +71,7 @@ class CreateType extends React.Component {
     }
 
     renderTypeFields() {
-        return this.state.fieldTypes.map(function(el, idx) {
+        return this.state.fieldTypes.map((el, idx) => {
             return (
                 <div key={idx}>
                     <span>category: {el.category} </span>

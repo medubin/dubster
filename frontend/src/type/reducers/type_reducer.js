@@ -20,3 +20,5 @@ const TypeReducer = (state = _nullTypes, action) => {
             return state;
     }
 }
+
+export default TypeReducer;

@@ -1,12 +1,16 @@
 import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Navbar from './navbar/components/navbar';
-import Modal from './modal/components/modal'
 import './common/scss/app.css'
 import { getCurrentUser } from './user/actions/user_actions'
-import UserForm from './user/components/user_form'
-import CreateType from './type/components/create_type/create_type'
+
+
+// Components
+import CreateType from './type/components/create_type/create_type';
+import UserForm from './user/components/user_form';
+import Modal from './modal/components/modal';
+import Navbar from './navbar/components/navbar';
+import ViewTypes from './type/components/view_types/view_types';
 
 const mapStateToProps = ({user}) => ({
   userFetched: user.userFetched,
@@ -37,6 +41,7 @@ class App extends React.Component {
             <Route path="/login" component={UserForm} />
             <Route path="/signup" component={UserForm} />
             <Route path="/type/new" component={CreateType} />
+            <Route path="/type/" component={ViewTypes} />
           </Switch>
         </div>
       </div>
