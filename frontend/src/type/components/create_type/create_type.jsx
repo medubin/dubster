@@ -67,7 +67,6 @@ class CreateType extends React.Component {
                 <option value={Type.STORY}>{Type.STORY} </option>
             </select>
         );
-        
     }
 
     renderTypeFields() {
@@ -83,7 +82,6 @@ class CreateType extends React.Component {
 
         }, this)
     }
-
 
     render() {
         return ( 

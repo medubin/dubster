@@ -33,9 +33,6 @@ class ViewTypes extends React.Component {
     
     }
 
-
-
-
     render() {
         console.log(this.props.types);
         return <div>{this.renderTypes()}</div>
