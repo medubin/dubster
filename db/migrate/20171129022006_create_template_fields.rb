@@ -1,7 +1,7 @@
-class CreateTypeFields < ActiveRecord::Migration[5.1]
+class CreateTemplateFields < ActiveRecord::Migration[5.1]
   def change
-    create_table :type_fields do |t|
-      t.integer :type_id, null: false
+    create_table :template_fields do |t|
+      t.integer :template_id, null: false
       t.string :name, null: false
       t.string :category, null: false
       t.integer :limit, default: nil

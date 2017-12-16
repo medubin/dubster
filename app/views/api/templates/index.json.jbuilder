@@ -1,0 +1,1 @@
+json.partial! 'api/templates/template', collection: @templates, as: :template

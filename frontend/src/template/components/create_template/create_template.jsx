@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NewField from './new_field';
-import * as Type from '../../constants/type';
-import {createType} from '../../actions/type_actions'
+import * as Template from '../../constants/template';
+import {createTemplate} from '../../actions/template_actions'
 import { withRouter } from 'react-router-dom';
 
 
@@ -11,25 +11,25 @@ const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    createType: typeData => dispatch(createType(typeData))
-  });
+    createTemplate: templateData => dispatch(createTemplate(templateData))
+});
   
   
 
-class CreateType extends React.Component {
+class CreateTemplate extends React.Component {
     constructor(props) {
         super(props)
         this.addNewFieldCallback = this.addNewFieldCallback.bind(this);
         this.state = {
             category:'',
             name:'',
-            fieldTypes: []
+            fieldTemplates: []
         }
-        this.submitType = this.submitType.bind(this)
+        this.submitTemplate = this.submitTemplate.bind(this)
     }
 
     addNewFieldCallback(category, name, limit) {
-        let newfieldTypes = this.state.fieldTypes.concat([
+        let newfieldTemplates = this.state.fieldTemplates.concat([
             {
                 category: category,
                 name: name,
@@ -37,19 +37,19 @@ class CreateType extends React.Component {
             }
 
         ]);
-        this.setState({fieldTypes: newfieldTypes});
+        this.setState({fieldTemplates: newfieldTemplates});
     }
 
-    deleteFieldType(event, idx) {
+    deleteFieldTemplate(event, idx) {
         event.preventDefault();
-        let newfieldTypes = this.state.fieldTypes.slice();
-        newfieldTypes.splice(idx, 1);
-        this.setState({fieldTypes: newfieldTypes});
+        let newfieldTemplates = this.state.fieldTemplates.slice();
+        newfieldTemplates.splice(idx, 1);
+        this.setState({fieldTemplates: newfieldTemplates});
     }
 
-    submitType(event) {
+    submitTemplate(event) {
         event.preventDefault();
-        this.props.createType(this.state)
+        this.props.createTemplate(this.state)
 
     }
 
@@ -59,24 +59,24 @@ class CreateType extends React.Component {
         });
       }
 
-    renderSelectTypeCategory() {
+    renderSelectTemplateCategory() {
         return (
             <select value={this.state.category} onChange={this.update('category')}>
                 <option value='' disabled selected>SELECT</option>
-                <option value={Type.THING}>{Type.THING} </option>
-                <option value={Type.STORY}>{Type.STORY} </option>
+                <option value={Template.THING}>{Template.THING} </option>
+                <option value={Template.STORY}>{Template.STORY} </option>
             </select>
         );
     }
 
-    renderTypeFields() {
-        return this.state.fieldTypes.map((el, idx) => {
+    renderTemplateFields() {
+        return this.state.fieldTemplates.map((el, idx) => {
             return (
                 <div key={idx}>
                     <span>category: {el.category} </span>
                     <span>name: {el.name} </span>
                     <span>limit: {el.limit} </span>
-                    <button onClick={(e) => this.deleteFieldType(e,idx)}>delete</button>
+                    <button onClick={(e) => this.deleteFieldTemplate(e,idx)}>delete</button>
                 </div>
             );
 
@@ -86,11 +86,11 @@ class CreateType extends React.Component {
     render() {
         return ( 
             <div> 
-                {this.renderSelectTypeCategory()}
+                {this.renderSelectTemplateCategory()}
                 <label>Name</label>
                 <input onChange={this.update('name')} value={this.state.name}></input>
-                <button onClick={this.submitType}>submit</button>
-                {this.renderTypeFields()}
+                <button onClick={this.submitTemplate}>submit</button>
+                {this.renderTemplateFields()}
                 <NewField addNewFieldCallback ={this.addNewFieldCallback}/>
            </div>
         );
@@ -100,4 +100,4 @@ class CreateType extends React.Component {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withRouter(CreateType));
+  )(withRouter(CreateTemplate));

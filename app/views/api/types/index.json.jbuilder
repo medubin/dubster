@@ -1,1 +1,0 @@
-json.partial! 'api/types/type', collection: @types, as: :type

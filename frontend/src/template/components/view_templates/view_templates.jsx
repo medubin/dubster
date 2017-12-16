@@ -1,28 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {getTypes} from '../../actions/type_actions'
+import {getTemplates} from '../../actions/template_actions'
 import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = ({type}) => ({
-    types: type.types
+const mapStateToProps = ({template}) => ({
+    templates: template.templates
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getTypes: () => dispatch(getTypes())
+    getTemplates: () => dispatch(getTemplates())
   });
 
 
-class ViewTypes extends React.Component {
+class ViewTemplates extends React.Component {
     constructor(props) {
         super(props)
     }
 
     componentWillMount() {
-        this.props.getTypes();
+        this.props.getTemplates();
     }
 
-    renderTypes() {
-        return this.props.types.map( (el, idx) => {
+    renderTemplates() {
+        return this.props.templates.map( (el, idx) => {
             return (
                 <div key={idx}>
                 <span>category: {el.category}, </span>
@@ -30,16 +30,14 @@ class ViewTypes extends React.Component {
                 </div>
             );
         });
-    
     }
 
     render() {
-        console.log(this.props.types);
-        return <div>{this.renderTypes()}</div>
+        return <div>{this.renderTemplates()}</div>
     }
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withRouter(ViewTypes));
+  )(withRouter(ViewTemplates));

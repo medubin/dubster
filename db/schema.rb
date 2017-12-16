@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 20171129022006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "type_fields", force: :cascade do |t|
-    t.integer "type_id", null: false
+  create_table "template_fields", force: :cascade do |t|
+    t.integer "template_id", null: false
     t.string "name", null: false
     t.string "category", null: false
     t.integer "limit"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20171129022006) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "types", force: :cascade do |t|
+  create_table "templates", force: :cascade do |t|
     t.string "name", null: false
     t.string "category", null: false
     t.integer "user_id", null: false

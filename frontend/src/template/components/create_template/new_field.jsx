@@ -1,5 +1,5 @@
 import React from 'react';
-import * as TypeField from '../../constants/type_field'
+import * as TemplateField from '../../constants/template_field'
 
 class NewField extends React.Component {
     constructor(props) {
@@ -20,15 +20,15 @@ class NewField extends React.Component {
         });
       }
 
-    renderSelectFieldTypeCategory() {
+    renderSelectFieldTemplateCategory() {
         return (
             <select value={this.state.category} onChange={this.update('category')}>
                 <option value='' disabled selected>SELECT</option>
-                <option value={TypeField.PERSON}>{TypeField.PERSON} </option>
-                <option value={TypeField.THING}>{TypeField.THING} </option>
-                <option value={TypeField.STORY}>{TypeField.STORY} </option>
-                <option value={TypeField.DATE}>{TypeField.DATE} </option>
-                <option value={TypeField.TEXT}>{TypeField.TEXT} </option>
+                <option value={TemplateField.PERSON}>{TemplateField.PERSON} </option>
+                <option value={TemplateField.THING}>{TemplateField.THING} </option>
+                <option value={TemplateField.STORY}>{TemplateField.STORY} </option>
+                <option value={TemplateField.DATE}>{TemplateField.DATE} </option>
+                <option value={TemplateField.TEXT}>{TemplateField.TEXT} </option>
             </select>
         );
     }
@@ -49,7 +49,7 @@ class NewField extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                {this.renderSelectFieldTypeCategory()}
+                {this.renderSelectFieldTemplateCategory()}
                 <label>Name</label>
                 <input onChange={this.update('name')} value={this.state.name}></input>
                 <label>Limit</label>

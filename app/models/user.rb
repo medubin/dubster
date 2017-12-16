@@ -7,9 +7,9 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_many :types
+  has_many :templates
 
-  has_many :type_fields, through: :types
+  has_many :template_fields, through: :templates
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

@@ -6,11 +6,11 @@ import { getCurrentUser } from './user/actions/user_actions'
 
 
 // Components
-import CreateType from './type/components/create_type/create_type';
+import CreateTemplate from './template/components/create_template/create_template';
 import UserForm from './user/components/user_form';
 import Modal from './modal/components/modal';
 import Navbar from './navbar/components/navbar';
-import ViewTypes from './type/components/view_types/view_types';
+import ViewTemplates from './template/components/view_templates/view_templates';
 
 const mapStateToProps = ({user}) => ({
   userFetched: user.userFetched,
@@ -40,8 +40,8 @@ class App extends React.Component {
           <Switch>
             <Route path="/login" component={UserForm} />
             <Route path="/signup" component={UserForm} />
-            <Route path="/type/new" component={CreateType} />
-            <Route path="/type/" component={ViewTypes} />
+            <Route path="/template/new" component={CreateTemplate} />
+            <Route path="/template/" component={ViewTemplates} />
           </Switch>
         </div>
       </div>
